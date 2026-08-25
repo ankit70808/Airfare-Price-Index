@@ -148,8 +148,11 @@ activemq-data/
 *.sage.py
 
 # Environments
+<<<<<<< HEAD
 
 .app/
+=======
+>>>>>>> ee1264d6c7b4f045a2e72e2e59c99ca13c2dd899
 .env
 .envrc
 .venv
@@ -217,4 +220,8 @@ marimo/_lsp/
 __marimo__/
 
 # Streamlit
+<<<<<<< HEAD
 .streamlit/secrets.toml
+=======
+.streamlit/secrets.toml
+>>>>>>> ee1264d6c7b4f045a2e72e2e59c99ca13c2dd899
