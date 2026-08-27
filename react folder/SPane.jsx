@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // 1. Add { onScrapeClick } inside the parentheses
-const SPane = ({ onScrapeClick }) => {
+const SPane = ({ onScrapeClick, setLastScraped }) => {
     // State to hold the currently selected values
     const [origin, setOrigin] = useState('');
     const [destination, setDestination] = useState('');
@@ -43,15 +43,19 @@ const SPane = ({ onScrapeClick }) => {
 
     // 2. Replace your existing handleScrape with this
     const handleScrape = () => {
-        setIsScraping(true);
-        if (onScrapeClick) {
-            onScrapeClick({ origin, destination, window });
-        }
-        setTimeout(() => setIsScraping(false), 1000);
-    };
+    setIsScraping(true);
+
+    if (setLastScraped) {
+        setLastScraped(new Date()); // Updates the timestamp state back in App
+    }
+
+    if (onScrapeClick) {
+        onScrapeClick({ origin, destination, window });
+    }
+    setTimeout(() => setIsScraping(false), 1000);
+};
 
 
-    
     return (
         <div className="flex w-full items-end justify-between gap-4 font-sans">
 
@@ -146,6 +150,7 @@ const SPane = ({ onScrapeClick }) => {
             <div className="flex items-end pb-[2px] shrink-0">
                 <button
                     onClick={handleScrape}
+
                     className="group relative bg-[#0ea5e9] hover:bg-[#0284c7] text-white rounded-3xl px-6 py-2 text-sm font-semibold flex items-center gap-2 transition-colors shadow-sm h-[38px] overflow-hidden"
                 >
                     <div className="relative w-4 h-4 flex items-center justify-center">
